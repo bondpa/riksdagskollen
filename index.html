@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Öva på Sveriges riksdagspartier, deras symboler och partiledare.">
+  <title>Riksdagskollen</title>
+  <link rel="preconnect" href="https://data.riksdagen.se">
+  <link rel="preconnect" href="https://media.riksdagen.se">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%234f46e5'/%3E%3Cpath d='M18 45V28l14-10 14 10v17M14 46h36M23 30v11m9-11v11m9-11v11' stroke='white' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <button class="brand" id="homeButton" type="button" aria-label="Till startsidan"><span class="brand-mark" aria-hidden="true">R</span><span>Riksdagskollen</span></button>
+      <div class="top-stats" aria-label="Dina resultat"><span class="stat-pill"><span aria-hidden="true">★</span> <strong id="totalScore">0</strong> poäng</span><span class="stat-pill"><span aria-hidden="true">🔥</span> Bäst: <strong id="bestStreak">0</strong></span></div>
+    </header>
+
+    <main id="app" tabindex="-1">
+      <section class="start-view" id="startView">
+        <div class="intro">
+          <p class="eyebrow">Sveriges riksdag · 8 partier</p>
+          <h1>Hur bra koll har du?</h1>
+          <p class="lede">Koppla ihop partier, symboler och partiledare. Välj ett träningspass och kör igång direkt.</p>
+        </div>
+        <div class="mode-grid" aria-label="Välj quizvariant">
+          <button class="mode-card featured" data-mode="mixed" type="button"><span class="mode-icon mixed-icon" aria-hidden="true">✦</span><span class="mode-copy"><strong>Mixat quiz</strong><small>Alla sorters frågor</small></span><span class="arrow" aria-hidden="true">→</span></button>
+          <button class="mode-card" data-mode="photo-party" type="button"><span class="mode-icon" aria-hidden="true">📸</span><span class="mode-copy"><strong>Bild → parti</strong><small>Välj bland fyra svar</small></span><span class="arrow" aria-hidden="true">→</span></button>
+          <button class="mode-card" data-mode="logo-leader" type="button"><span class="mode-icon" aria-hidden="true">🔎</span><span class="mode-copy"><strong>Symbol → partiledare</strong><small>Välj bland fyra svar</small></span><span class="arrow" aria-hidden="true">→</span></button>
+          <button class="mode-card" data-mode="leader-logo" type="button"><span class="mode-icon" aria-hidden="true">🧩</span><span class="mode-copy"><strong>Partiledare → symbol</strong><small>Välj rätt partisymbol</small></span><span class="arrow" aria-hidden="true">→</span></button>
+          <button class="mode-card" data-mode="photo-leader-text" type="button"><span class="mode-icon" aria-hidden="true">⌨️</span><span class="mode-copy"><strong>Bild → skriv namn</strong><small>Skriv partiledarens namn</small></span><span class="arrow" aria-hidden="true">→</span></button>
+          <button class="mode-card" data-mode="logo-party-text" type="button"><span class="mode-icon" aria-hidden="true">✍️</span><span class="mode-copy"><strong>Symbol → skriv parti</strong><small>Skriv partiets namn</small></span><span class="arrow" aria-hidden="true">→</span></button>
+        </div>
+        <div class="party-strip" id="partyStrip" aria-label="De åtta riksdagspartierna"></div>
+        <p class="data-note">Uppdaterad september 2026 · Miljöpartiet har två språkrör.</p>
+      </section>
+
+      <section class="quiz-view hidden" id="quizView" aria-live="polite">
+        <div class="quiz-meta"><button class="back-button" id="backButton" type="button">← Avsluta</button><span id="modeLabel">Mixat quiz</span><span><strong id="questionNumber">1</strong> / 10</span></div>
+        <div class="progress-track" aria-hidden="true"><span id="progressBar"></span></div>
+        <div class="quiz-stats"><span>Poäng <strong id="quizScore">0</strong></span><span>Svit <strong id="streak">0</strong> 🔥</span></div>
+        <article class="question-card">
+          <p class="question-kicker" id="questionKicker">Vem är det här?</p>
+          <h2 id="questionText">Vilket parti leder personen?</h2>
+          <div class="visual-stage" id="visualStage"></div>
+          <div class="answer-area" id="answerArea"></div>
+          <div class="feedback hidden" id="feedback" role="status"></div>
+          <button class="next-button hidden" id="nextButton" type="button">Nästa fråga <span aria-hidden="true">→</span></button>
+        </article>
+      </section>
+
+      <section class="result-view hidden" id="resultView">
+        <div class="result-burst" aria-hidden="true">★</div><p class="eyebrow">Träningspass klart</p><h1 id="resultTitle">Snyggt jobbat!</h1>
+        <p class="result-score"><strong id="finalScore">0</strong><span>/ 10 rätt</span></p><p id="resultMessage">Du har bra koll på riksdagspartierna.</p>
+        <div class="result-stats"><div><strong id="resultPoints">0</strong><span>poäng</span></div><div><strong id="resultStreak">0</strong><span>bästa svit</span></div></div>
+        <div class="result-actions"><button class="primary-button" id="retryButton" type="button">Kör samma igen</button><button class="secondary-button" id="chooseButton" type="button">Välj annat quiz</button></div>
+      </section>
+    </main>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
